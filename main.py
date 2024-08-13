@@ -1,10 +1,11 @@
 # dummy http GCP cloud function using functionframework
 
 
-from google.cloud import functionframework
+# Import the 'functionframework' package
+import functions_framework
 
 
-@functionframework.http
+@functions_framework.http
 def main(request):
     print("working")
     return 'Hello, World!'
