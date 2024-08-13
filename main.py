@@ -13,7 +13,7 @@ def main(request):
     print("working")
     # Get data from GCS using Cloud Storage client library
     storage_client = storage.Client()
-    bucket = storage_client.bucket('latam')
+    bucket = storage_client.bucket('latam-challenge')
     blob = bucket.blob('farmers-protest-tweets-2021-2-4.json')
     data = blob.download_as_string()
     json_data = json.loads(data)
