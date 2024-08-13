@@ -5,6 +5,6 @@ from google.cloud import functionframework
 
 
 @functionframework.http
-def hello_http(request):
+def main(request):
     print("working")
     return 'Hello, World!'
