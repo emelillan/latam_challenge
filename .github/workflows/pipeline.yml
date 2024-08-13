@@ -46,4 +46,3 @@ jobs:
 # Cloud Functions Developer
 # roles/iam.serviceAccountUser
 # roles/iam.serviceAccountTokenCreator
-# cloudfunctions.functions.getIamPolicy??
