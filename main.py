@@ -6,6 +6,7 @@ import functions_framework
 from google.cloud import storage
 import pandas as pd
 import json
+from src.q1_memory import q1_memory
 
 
 @functions_framework.http
@@ -16,7 +17,9 @@ def main(request):
     bucket = storage_client.bucket('latam-challenge')
     blob = bucket.blob('farmers-protest-tweets-2021-2-4.json')
     data = blob.download_as_string()
-    json_data = json.loads(data)
-    df = pd.DataFrame(json_data)
-    print(df.head())
-    return 'Hello, World!'
+    # save data in the tmp folder
+    with open('/tmp/data.json', 'wb') as f:
+        f.write(data)
+    result = q1_memory('/tmp/data.json')
+    # return the result as a json
+    return json.dumps(result)
