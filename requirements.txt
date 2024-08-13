@@ -1,4 +1,4 @@
 memory-profiler==0.61.0
 emoji==0.6.0
 pandas==2.2.2
-function-framework
+functions-framework
