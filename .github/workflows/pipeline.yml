@@ -30,9 +30,9 @@ jobs:
           runtime: python39
           project_id: ${{env.PROJECT_ID}}
           entry_point: main
-          memory: 256
+          memory_mb: 256
           timeout: 60
-          http_trigger: true
+
 
       - name: make the url aunthenticated
         run: |
@@ -46,3 +46,4 @@ jobs:
 # Cloud Functions Developer
 # roles/iam.serviceAccountUser
 # roles/iam.serviceAccountTokenCreator
+# cloudfunctions.functions.getIamPolicy??
