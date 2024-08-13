@@ -38,3 +38,6 @@ jobs:
       - name: test the url
         run: curl "${{ steps.deploy.outputs.url }}"
 
+# SA roles:
+# Cloud Functions Invoker
+# Cloud Functions Developer
