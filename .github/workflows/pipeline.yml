@@ -30,8 +30,8 @@ jobs:
           runtime: python39
           project_id: ${{env.PROJECT_ID}}
           entry_point: main
-          memory: 256MB
-          timeout: 60s
+          memory: 256
+          timeout: 60
           http_trigger: true
 
       - name: make the url aunthenticated
