@@ -1,7 +1,7 @@
 name: Deploy Cloud Function
 on:
   push:
-    branches: [ dev ]
+    branches: [ main, dev ]
     paths:
         - main.py
         - .github/workflows/pipeline.yml
@@ -30,6 +30,9 @@ jobs:
           runtime: python39
           project_id: ${{env.PROJECT_ID}}
           entry_point: main
+          memory: 256MB
+          timeout: 60s
+          http_trigger: true
 
       - name: make the url aunthenticated
         run: |
@@ -42,3 +45,4 @@ jobs:
 # Cloud Functions Invoker
 # Cloud Functions Developer
 # roles/iam.serviceAccountUser
+# roles/iam.serviceAccountTokenCreator
