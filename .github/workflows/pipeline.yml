@@ -41,3 +41,4 @@ jobs:
 # SA roles:
 # Cloud Functions Invoker
 # Cloud Functions Developer
+# roles/iam.serviceAccountUser
