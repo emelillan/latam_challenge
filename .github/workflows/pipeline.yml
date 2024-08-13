@@ -30,7 +30,7 @@ jobs:
           runtime: python39
           project_id: ${{env.PROJECT_ID}}
           entry_point: main
-          memory_mb: 256
+          memory_mb: 450
           timeout: 60
 
 
