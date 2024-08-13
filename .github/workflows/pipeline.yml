@@ -1,0 +1,44 @@
+name: Deploy Cloud Function
+on:
+  push:
+    branches: [ dev ]
+    paths:
+        - main.py
+        - .github/workflows/pipeline.yml
+env:
+  PROJECT: latam_challenge
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+
+      - uses: actions/checkout@v2
+
+      - name: Setup GCP Service Account
+        uses: google-github-actions/auth@v0.4.1
+        with:
+          project_id: ${{env.PROJECT_ID}}
+          credentials_json: ${{secrets.GOOGLE_CREDENTIALS}}
+
+
+      - name: deploy cloud function
+        id: deploy
+        uses: google-github-actions/deploy-cloud-functions@v0.6.0
+        with:
+          name: latam__challenge
+          runtime: python39
+          project_id: ${{env.PROJECT_ID}}
+          entry_point: main
+
+      - name: make the url aunthenticated
+        run: |
+          gcloud functions add-iam-policy-binding latam__challenge --member="allUsers" --role="roles/cloudfunctions.invoker"
+
+      - name: test the url
+        run: curl "${{ steps.deploy.outputs.url }}"
+
+# SA roles:
+# Cloud Functions Invoker
+# Cloud Functions Developer
+# roles/iam.serviceAccountUser
