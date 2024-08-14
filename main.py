@@ -11,7 +11,10 @@ from src.q1_memory import q1_memory
 
 @functions_framework.http
 def main(request):
-    print("working")
+
+    # Get request data
+    request_json = request.get_json()
+    print(request_json)
     # Get data from GCS using Cloud Storage client library
     storage_client = storage.Client()
     bucket = storage_client.bucket('latam-challenge')
@@ -21,5 +24,6 @@ def main(request):
     with open('/tmp/data.json', 'wb') as f:
         f.write(data)
     result = q1_memory('/tmp/data.json')
+    result = {str(k): v for k, v in result}
     # return the result as a json
     return json.dumps(result)
